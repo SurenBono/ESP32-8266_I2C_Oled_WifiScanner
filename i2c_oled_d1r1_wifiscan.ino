@@ -13,8 +13,8 @@ Created on:11-02-2019
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #define SCREEN_WIDTH 128 
-#define SCREEN_HEIGHT 32 
-#define OLED_RESET     2 
+#define SCREEN_HEIGHT 32 //64
+#define OLED_RESET     2 //4
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
       
                                    
@@ -67,7 +67,7 @@ int n = WiFi.scanNetworks();                                                    
   }
   Serial.println("");
  
-  display.display(); 
-  display.startscrollleft(0x00, 0x0F);
+  display.display();                                                                // Display Buffer
+  display.startscrollleft(0x00, 0x0F);                                              // Scroll to left
   delay(20000);                                                                     //wait 5 seconds
 }
