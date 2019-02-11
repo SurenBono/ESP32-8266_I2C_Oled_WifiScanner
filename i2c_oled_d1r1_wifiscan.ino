@@ -7,6 +7,7 @@ Choose custom font  :   http://oleddisplay.squix.ch/#/home
 Modified & Developed by https://srotogargees.business.site/
 Created on:11-02-2019
 */
+//#include "WiFi.h"
 #include "ESP8266WiFi.h"
 #include <SPI.h>
 #include <Wire.h>
