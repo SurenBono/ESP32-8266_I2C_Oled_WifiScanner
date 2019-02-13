@@ -11,4 +11,4 @@ Choose custom font  :   http://oleddisplay.squix.ch/#/home
 Modified & Developed by https://srotogargees.business.site/
 Created on:11-02-2019
 
-P/S: Multiplexed multiple OLED for bigger screen...
+P/S: Multiplex for multi OLED for bigger screen...wish it was 4x8cm uno size screen with multi button on A0
