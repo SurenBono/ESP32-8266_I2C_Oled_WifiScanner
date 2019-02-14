@@ -12,5 +12,7 @@ Modified & Developed by https://srotogargees.business.site/
 Created on:11-02-2019
 
 P/S: Multiplex for multi OLED for bigger screen...wish it was i2c 4x7 cm uno style size display shield with multi button on A0
-![PIXEL COORDINATE](PIXEL COORDINATE.jpg)
+
+        ESP32_I2C-OLED-128X64_WIFI_SCANNER/PIXEL COORDINATE.jpg
+      
 
