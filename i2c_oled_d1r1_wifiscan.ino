@@ -35,40 +35,38 @@ void setup()   {
  
 void loop() {
  
-  display.clearDisplay();                                                           //clear display @ beginning of each loop
-  display.setTextSize(1);                                                           //set smallest text size
-  display.setTextColor(WHITE);                                                      //set text color to WHITE
-  display.setCursor(0,0);                                                           //cursor to upper left
+  display.clearDisplay();                                                           // clear display @ beginning of each loop
+  display.setTextSize(1);                                                           // set smallest text size
+  display.setTextColor(WHITE);                                                      // set text color to WHITE
+  display.setCursor(0,0);                                                           // cursor to top left
  
   //display.println("scan start");
  
-int n = WiFi.scanNetworks();                                                        //get # of networks
-    display.println("Scan WiFi");                                                   //print title to buffer
+int n = WiFi.scanNetworks();                                                        // get # of networks
+    display.println("Scan WiFi");                                                   // save title to buffer
   
-  if (n == 0)                                                                       //if no networks found
-    display.println("no networks found");                                           //print msg to buffer
-  else                                                                              //otherwise..
-  { 
-    display.setCursor(64,0);
-    display.print(n);
+  if (n == 0)                                                                       // if no networks found
+    display.println("no networks found");                                           // save msg to buffer
+  else                                                                              // otherwise..
+  {                                                                                 // C = column. R= Row (pixel)
+    display.setCursor(64,0);                                                        // # (n) of network found to C64.R0 
+    display.print(n);                                                               // save n to buffer
     display.setCursor(70,0);
-    display.println(" = Found  ");                                                  //print n to buffer
-                                                                
-    for (int i = 0; i < n; ++i)                                                     //for loop for # of networks
-    {                                                                               //print SSID and RSSI for each network found
+    display.println(" = Found  ");                                                  // Add "= Found" in buffer to C70,R0 pixel                            
+    display.setCursor(0,8);                                                         // Start found list to C1,R8 pix or 1st 3rd word row 
+    for (int i = 0; i < n; ++i)                                                     // for loop for # of networks
+    {                                                                               // save SSID and RSSI for each network found
       display.print(i + 1);
       display.print(": ");
       display.print(WiFi.SSID(i));
       display.print(" (");
       display.print(WiFi.RSSI(i));
       display.print(")");
-
       delay(10);
     }
   }
-  Serial.println("");
- 
+  Serial.println("");                                                               // Display everything in "" in buffer
   display.display();                                                                // Display Buffer
-  display.startscrollleft(0x00, 0x0F);                                              // Scroll to left
-  delay(20000);                                                                     //wait 5 seconds
+  display.startscrollleft(0x00, 0x0F);                                              // Scroll everything on screen to left
+  delay(20000);                                                                     // wait 5 seconds and refresh
 }
