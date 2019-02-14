@@ -53,7 +53,7 @@ int n = WiFi.scanNetworks();                                                    
     display.print(n);                                                               // save n to buffer
     display.setCursor(70,0);
     display.println(" = Found  ");                                                  // Add "= Found" in buffer to C70,R0 pixel                            
-    display.setCursor(0,8);                                                         // Start found list to C1,R8 pix or 1st 3rd word row 
+    display.setCursor(0,8);                                                         // Start found list to C1,R8 pix or 1st col 2nd row 
     for (int i = 0; i < n; ++i)                                                     // for loop for # of networks
     {                                                                               // save SSID and RSSI for each network found
       display.print(i + 1);
