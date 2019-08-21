@@ -1,5 +1,7 @@
-//#include "ESP8266WiFi.h"
-#include "WiFi.h"
+// 4 WIRE i2c OLED VCC=3V3,Common GND,SCL & SDA.
+
+//#include "ESP8266WiFi.h"                                                         // Uncomment for esp8266 modules
+#include "WiFi.h"                                                                  // esp32 wifi driver,Comment if esp8266 vice versa
 #include <SPI.h>
 #include <Wire.h>
 #include <Adafruit_GFX.h>
@@ -7,14 +9,13 @@
 #define SCREEN_WIDTH 128 
 #define SCREEN_HEIGHT 64 
 #define OLED_RESET     4 
-Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);          // i[]c constructors
       
                                    
- 
 void setup()   {                
  
   display.begin(SSD1306_SWITCHCAPVCC, 0x3C);                                        //start the OLED @ Hex addy 0x3C
-  display.display();                                                                //show the Adafruit Logo
+  display.display();                                                                //show the Adafruit Logo or custom logo splash.h
   delay(2000);                                                                      //for 2 seconds
   display.clearDisplay();                                                           //clear display & buffer
   WiFi.mode(WIFI_STA);                                                              //set WiFi mode
@@ -34,30 +35,30 @@ void loop() {
   //display.println("scan start");
  
 int n = WiFi.scanNetworks();                                                        //get # of networks
-  display.println("_____ Scan WiFi _____");                                         //print title to buffer
+  display.print("__ WiFi Found : ");                                                //compacted title with scan result (n)
   
   if (n == 0)                                                                       //if no networks found
     display.println("no networks found");                                           //print msg to buffer
   else                                                                              //otherwise..
   { 
-    display.print(n);                                                               //print n to buffer
-    display.println(" = Found  ");  
+    display.print(n);                                                               //print number of AP found to compacted title
+    display.println(" __");  
                                                                 
     for (int i = 0; i < n; ++i)                                                     //for loop for # of networks
     {
                                                                                     //print SSID and RSSI for each network found
       display.print(i + 1);
-      display.print(": ");
+      display.print(" ");
       display.print(WiFi.SSID(i));
-      display.print(" (");
+      display.print(" ");
       display.print(WiFi.RSSI(i));
-      display.print(")");
-
+      display.print(" ");                                                                    // leave a empty colomn space
+      //display.print((WiFi.encryptionType(i) == ENC_TYPE_NONE)?" Unsecured":" Secured");    // Wifi Security Check protocol
+      display.println();                                                                     // add next AP in new row to buffer
       delay(10);
     }
   }
-  Serial.println("");
- 
-  display.display();                                                               //show buffer
-  delay(5000);                                                                     //wait 5 seconds
+  display.println("");                                                             //display everything in bitween " "
+  display.display();                                                               //show data in buffer 
+  delay(5000);                                                                     //wait 5 seconds till next loop
 }
