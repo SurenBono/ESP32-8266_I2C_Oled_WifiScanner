@@ -1,4 +1,13 @@
-// 4 WIRE i2c OLED VCC=3V3,Common GND,SCL & SDA.
+/** 
+4 WIRE i2c OLED VCC=3V3,Common GND,SCL & SDA.
+R32 are UNO styled microcontroller uploaded with ESP32 DEV MODULE
+Boot up on your own logo http://javl.github.io/image2cpp/ ,splash.h modification in lib,backup existing. 
+,if failed return to default splash= choose erase all flash when reflashing after restoring backup splash.h
+Choose custom font  :   http://oleddisplay.squix.ch/#/home
+Modified & Developed by https://srotogargees.business.site/
+Created on:11-02-2019
+Revised on:21-08-2019
+*/
 
 //#include "ESP8266WiFi.h"                                                         // Uncomment for esp8266 modules
 #include "WiFi.h"                                                                  // esp32 wifi driver,Comment if esp8266 vice versa
